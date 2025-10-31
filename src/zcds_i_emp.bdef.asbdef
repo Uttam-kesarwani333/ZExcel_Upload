@@ -1,0 +1,21 @@
+managed implementation in class zbp_cds_i_emp unique;
+strict ( 2 );
+
+define behavior for Zcds_I_Emp //alias <alias_name>
+persistent table ztab_emp
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  //field ( readonly ) EmpId;
+
+
+  static action ExcelUpload deep parameter ZRK_D_UPLOAD_EXCEL_UK ;
+  mapping for ztab_emp {
+          EmpId = emp_id;
+          EmpName = emp_name;
+  }
+}
